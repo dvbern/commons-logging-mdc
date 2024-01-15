@@ -3,7 +3,13 @@ Helper methods to facilitate filling the Logging [Mapped Diagnostics Context MDC
 
 Available versions: see [Releases](https://www.github.com/dvbern/commons-logging-mdc/releases)
 
-## lib-commons-logging-mdc-api
+This lib consists of two modules:
+* [lib-commons-logging-mdc-api](#module-lib-commons-logging-mdc-api) \
+  The API is a low-level wrapper around the MDC and also defines common values used by DV Bern applications.
+* [lib-commons-logging-mdc-jaxrs-filter](#module-lib-commons-logging-mdc-jaxrs-filter) \
+  The JAX-RS filter facilitates using JaxRS filters to fill the MDC with our common values.
+
+## Module: lib-commons-logging-mdc-api
 Basic API to fill ***and cleanup** the MDC.
 
 Workhorse is the class `MDCDAO` which is used to fill the MDC with the most used values.
@@ -43,7 +49,7 @@ public class MyClass {
 }
 ```
 
-## lib-commons-logging-mdc-jaxrs-filter
+## Module: lib-commons-logging-mdc-jaxrs-filter
 JAX-RS filter to fill the MDC with common values used by all DV Bern applications.
 
 ### Usage
