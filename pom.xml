@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.dvbern.oss.maven</groupId>
+		<artifactId>parent-minimal</artifactId>
+		<version>3.0.0</version>
+	</parent>
+
+	<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
+	<artifactId>commons-logging-mdc-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<slf4j.version>2.0.11</slf4j.version>
+		<spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
+		<junit.jupiter.version>5.10.0</junit.jupiter.version>
+		<mockito-junit-jupiter.version>5.7.0</mockito-junit-jupiter.version>
+
+		<spotbugs-maven-plugin.version>4.8.1.0</spotbugs-maven-plugin.version>
+		<maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
+		<maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
+		<maven-checkstyle.version>10.12.7</maven-checkstyle.version>
+		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+	</properties>
+
+	<name>DVBern Commons JaxRS Logging</name>
+	<description>This Java library contains helpers filling standard logging MDC fields expected in all apps.</description>
+	<url>https://github.com/dvbern/commons-logging-mdc</url>
+
+	<organization>
+		<name>DV Bern AG</name>
+		<url>https://www.dvbern.ch</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<modules>
+		<module>api</module>
+		<module>jaxrs-filter</module>
+	</modules>
+
+	<scm>
+		<connection>scm:git:git://github.com/dvbern/commons-logging-mdc.git</connection>
+		<developerConnection>scm:git:ssh://github.com:dvbern/commons-logging-mdc.git</developerConnection>
+		<url>https://github.com/dvbern/commons-logging-mdc.git</url>
+
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/dvbern/commons-logging-mdc/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>GitHub Actions</system>
+		<url>https://github.com/dvbern/commons-logging-mdc/actions</url>
+	</ciManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
+				<artifactId>commons-logging-mdc-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
+				<artifactId>commons-logging-mdc-jaxrs-filter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.30</version>
+			</dependency>
+			<dependency>
+				<groupId>org.checkerframework</groupId>
+				<artifactId>checker-qual</artifactId>
+				<version>3.42.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-annotations</artifactId>
+				<version>4.8.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>jakarta.annotation</groupId>
+				<artifactId>jakarta.annotation-api</artifactId>
+				<version>2.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>jakarta.enterprise</groupId>
+				<artifactId>jakarta.enterprise.cdi-api</artifactId>
+				<version>3.0.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito-junit-jupiter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-junit-jupiter</artifactId>
+				<version>${mockito-junit-jupiter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.assertj</groupId>
+				<artifactId>assertj-core</artifactId>
+				<version>3.24.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>
