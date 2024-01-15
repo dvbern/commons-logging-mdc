@@ -27,9 +27,16 @@
 		<maven-checkstyle.version>10.12.7</maven-checkstyle.version>
 		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+
+		<!-- ! keep in sync with .mvn/maven-wrapper.properties ! -->
+		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
+		<maven-enforcer-plugin.requireJavaVersion.version>${maven-compiler-plugin.javaversion}</maven-enforcer-plugin.requireJavaVersion.version>
+		<!-- versions are pinned via property in some child pom... and enforcer cannot deal with this :( -->
+		<maven-enforcer-plugin.requirePluginVersions.unCheckedPlugins>
+			<!--			io.quarkus.platform:quarkus-maven-plugin,-->
+		</maven-enforcer-plugin.requirePluginVersions.unCheckedPlugins>
 	</properties>
 
-	<name>DVBern Commons JaxRS Logging</name>
 	<description>This Java library contains helpers filling standard logging MDC fields expected in all apps.</description>
 	<url>https://github.com/dvbern/commons-logging-mdc</url>
 
@@ -145,18 +152,28 @@
 
 	<build>
 		<plugins>
+			<!-- <editor-fold desc="maven-checkstyle-plugin" defaultstate="collapsed"> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 			</plugin>
+			<!-- </editor-fold> -->
+
+			<!-- <editor-fold desc="maven-pmd-plugin" defaultstate="collapsed"> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 			</plugin>
+			<!-- </editor-fold> -->
+
+			<!-- <editor-fold desc="spotbugs-maven-plugin" defaultstate="collapsed"> -->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
 			</plugin>
+			<!-- </editor-fold> -->
+
+			<!-- <editor-fold desc="jacoco-maven-plugin" defaultstate="collapsed"> -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -210,6 +227,8 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- </editor-fold> -->
+
 		</plugins>
 
 	</build>
