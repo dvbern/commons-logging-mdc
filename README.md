@@ -12,7 +12,7 @@ This lib consists of two modules:
 ## Module: lib-commons-logging-mdc-api
 Basic API to fill ***and cleanup** the MDC.
 
-Workhorse is the class `MDCDAO` which is used to fill the MDC with the most used values.
+Workhorse is the class [`MDCDAOSlf4j`](api/src/main/java/ch/dvbern/oss/commons/logging/mdc/MDCDAOSlf4j.java) which is used to fill the MDC with the most used values.
 
 ### Usage
 Maven-Dependency:
@@ -31,7 +31,7 @@ import ch.dvbern.oss.commons.logging.mdc.MDCDAOSlf4j;
 import ch.dvbern.oss.commons.logging.mdc.MDCValues;
 
 public class MyClass {
-	private final MDCDAO mdcDAO = new MDCDAODefaultImpl();
+	private final MDCDAO mdcDAO = new MDCDAOSlf4j();
 
     public void doSomethingWithMDC() {
         // fill MDC
