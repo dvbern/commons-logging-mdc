@@ -31,10 +31,6 @@
 		<!-- ! keep in sync with .mvn/maven-wrapper.properties ! -->
 		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
 		<maven-enforcer-plugin.requireJavaVersion.version>${maven-compiler-plugin.javaversion}</maven-enforcer-plugin.requireJavaVersion.version>
-		<!-- versions are pinned via property in some child pom... and enforcer cannot deal with this :( -->
-		<maven-enforcer-plugin.requirePluginVersions.unCheckedPlugins>
-			<!--			io.quarkus.platform:quarkus-maven-plugin,-->
-		</maven-enforcer-plugin.requirePluginVersions.unCheckedPlugins>
 	</properties>
 
 	<description>This Java library contains helpers filling standard logging MDC fields expected in all apps.</description>
