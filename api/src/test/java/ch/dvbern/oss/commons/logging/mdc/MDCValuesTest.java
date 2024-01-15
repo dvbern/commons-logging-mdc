@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,26 +46,32 @@ class MDCValuesTest {
 
 	@Nested
 	class fromStandardFields {
-		private final LoggingApp app = new LoggingApp("The App", new Semver("1.2.3-SNAPSHOT"), "The Instance");
+		private final LoggingApp app =
+				new LoggingApp("The App", "The Module", new Semver("1.2.3-SNAPSHOT"), "The Instance");
 		private final LoggingSource source = new LoggingSource("/foo/bar", "POST");
 		private final LoggingPrincipal principal = new LoggingPrincipal("The Principal");
 		private final LoggingTenant tenant = new LoggingTenant("The Tenant");
 
-		@Test
-		void creates_MDCValues_with_all_standard_fields_filled() {
+		private static final Map<CommonMDCField, Object> EXPECTED_COMMON_FIELD_VALUES = Map.of(
+				CommonMDCField.AppName, "The App",
+				CommonMDCField.AppModule, "The Module",
+				CommonMDCField.AppVersion, "1.2.3-SNAPSHOT",
+				CommonMDCField.AppInstance, "The Instance",
+				CommonMDCField.RequestSource, "/foo/bar",
+				CommonMDCField.RequestSourceArgs, "POST",
+				CommonMDCField.Principal, "The Principal",
+				CommonMDCField.TenantId, "The Tenant"
+		);
+
+		@ParameterizedTest
+		@EnumSource(CommonMDCField.class)
+		void creates_MDCValues_with_all_standard_fields_filled(CommonMDCField field) {
+			var expected = EXPECTED_COMMON_FIELD_VALUES.get(field);
 
 			MDCValues mdcValues = MDCValues.fromStandardFields(app, source, principal, tenant);
 
 			assertThat(mdcValues.values())
-					.containsExactlyInAnyOrderEntriesOf(Map.of(
-							CommonMDCField.AppName.name(), "The App",
-							CommonMDCField.AppVersion.name(), "1.2.3-SNAPSHOT",
-							CommonMDCField.AppInstance.name(), "The Instance",
-							CommonMDCField.RequestSource.name(), "/foo/bar",
-							CommonMDCField.RequestSourceArgs.name(), "POST",
-							CommonMDCField.Principal.name(), "The Principal",
-							CommonMDCField.TenantId.name(), "The Tenant"
-					));
+					.containsEntry(field.name(), expected);
 		}
 
 		@Test

@@ -83,7 +83,7 @@ class CommonMDCFieldRequestFilterHelperTest {
 
 			requestHelper.filter(
 					requestCtx,
-					new LoggingApp("The App", new Semver("1.2.3-SNAPSHOT"), "The Instance"),
+					new LoggingApp("The App", "The Module", new Semver("1.2.3-SNAPSHOT"), "The Instance"),
 					new LoggingSource("/foo/bar", "POST"),
 					new LoggingPrincipal("The Principal"),
 					new LoggingTenant("The Tenant")
@@ -96,6 +96,7 @@ class CommonMDCFieldRequestFilterHelperTest {
 				CommonMDCField.RequestSourceArgs, "POST",
 				CommonMDCField.TenantId, "The Tenant",
 				CommonMDCField.AppName, "The App",
+				CommonMDCField.AppModule, "The Module",
 				CommonMDCField.AppVersion, "1.2.3-SNAPSHOT",
 				CommonMDCField.AppInstance, "The Instance"
 		);
@@ -140,7 +141,7 @@ class CommonMDCFieldRequestFilterHelperTest {
 
 			sut.filter(
 					requestCtx,
-					new LoggingApp("ignored", new Semver("0.0.0"), "ignored"),
+					new LoggingApp("ignored", "ignored", new Semver("0.0.0"), "ignored"),
 					new LoggingSource("ignored", "ignored"),
 					null,
 					new LoggingTenant("ignored")
@@ -167,7 +168,7 @@ class CommonMDCFieldRequestFilterHelperTest {
 
 			sut.filter(
 					requestCtx,
-					new LoggingApp("ignored", new Semver("0.0.0"), "ignored"),
+					new LoggingApp("ignored", "ignored", new Semver("0.0.0"), "ignored"),
 					new LoggingSource("ignored", "ignored"),
 					new LoggingPrincipal("The Principal"),
 					null
