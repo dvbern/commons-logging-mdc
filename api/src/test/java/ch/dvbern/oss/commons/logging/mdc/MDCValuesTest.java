@@ -53,7 +53,7 @@ class MDCValuesTest {
 		private final LoggingTenant tenant = new LoggingTenant("The Tenant");
 
 		private static final Map<CommonMDCField, Object> EXPECTED_COMMON_FIELD_VALUES = Map.of(
-				CommonMDCField.AppName, "The App",
+				CommonMDCField.AppProject, "The App",
 				CommonMDCField.AppModule, "The Module",
 				CommonMDCField.AppVersion, "1.2.3-SNAPSHOT",
 				CommonMDCField.AppInstance, "The Instance",

@@ -95,7 +95,7 @@ class CommonMDCFieldRequestFilterHelperTest {
 				CommonMDCField.RequestSource, "/foo/bar",
 				CommonMDCField.RequestSourceArgs, "POST",
 				CommonMDCField.TenantId, "The Tenant",
-				CommonMDCField.AppName, "The App",
+				CommonMDCField.AppProject, "The App",
 				CommonMDCField.AppModule, "The Module",
 				CommonMDCField.AppVersion, "1.2.3-SNAPSHOT",
 				CommonMDCField.AppInstance, "The Instance"

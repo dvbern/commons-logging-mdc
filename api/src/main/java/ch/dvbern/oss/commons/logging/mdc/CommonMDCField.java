@@ -6,7 +6,7 @@ public enum CommonMDCField {
 	RequestSource,
 	RequestSourceArgs,
 	TenantId,
-	AppName,
+	AppProject,
 	AppModule,
 	AppVersion,
 	AppInstance,

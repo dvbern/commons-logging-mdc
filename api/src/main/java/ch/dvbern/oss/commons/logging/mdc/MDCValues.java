@@ -71,7 +71,7 @@ public final class MDCValues {
 				CommonMDCField.RequestSource.name(), source.value(),
 				CommonMDCField.RequestSourceArgs.name(), source.args(),
 				CommonMDCField.TenantId.name(), tenantDisplayed,
-				CommonMDCField.AppName.name(), app.appName(),
+				CommonMDCField.AppProject.name(), app.appProject(),
 				CommonMDCField.AppModule.name(), app.appModule(),
 				CommonMDCField.AppVersion.name(), app.appVersion().toString(),
 				CommonMDCField.AppInstance.name(), app.appInstance()
