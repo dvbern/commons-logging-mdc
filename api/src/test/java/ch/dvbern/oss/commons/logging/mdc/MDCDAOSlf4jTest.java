@@ -16,8 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @Slf4j
-class MDCDAODefaultImplTest {
-	private final MDCDAODefaultImpl sut = new MDCDAODefaultImpl();
+class MDCDAOSlf4jTest {
+	private final MDCDAOSlf4j sut = new MDCDAOSlf4j();
 
 	private Map<String, String> mdcBackup;
 

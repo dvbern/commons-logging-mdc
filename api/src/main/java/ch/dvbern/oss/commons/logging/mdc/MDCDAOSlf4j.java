@@ -2,7 +2,10 @@ package ch.dvbern.oss.commons.logging.mdc;
 
 import org.slf4j.MDC;
 
-public class MDCDAODefaultImpl implements MDCDAO {
+/**
+ * Delegates to the SLF4J {@link MDC} implementation.
+ */
+public class MDCDAOSlf4j implements MDCDAO {
 
 	@Override
 	public void applyToMDC(MDCValues mdcValues) {

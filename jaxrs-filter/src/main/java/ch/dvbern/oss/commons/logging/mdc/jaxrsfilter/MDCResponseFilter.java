@@ -3,7 +3,7 @@ package ch.dvbern.oss.commons.logging.mdc.jaxrsfilter;
 import java.util.Optional;
 
 import ch.dvbern.oss.commons.logging.mdc.MDCDAO;
-import ch.dvbern.oss.commons.logging.mdc.MDCDAODefaultImpl;
+import ch.dvbern.oss.commons.logging.mdc.MDCDAOSlf4j;
 import ch.dvbern.oss.commons.logging.mdc.MDCValues;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerResponseContext;
@@ -23,7 +23,7 @@ public class MDCResponseFilter {
 	 * @param requestContextKey See {@link MDCRequestFilter#usingRequestContextPropertyKey(String)}
 	 */
 	public static MDCResponseFilter usingRequestContextPropertyKey(String requestContextKey) {
-		return new MDCResponseFilter(new MDCDAODefaultImpl(), requestContextKey);
+		return new MDCResponseFilter(new MDCDAOSlf4j(), requestContextKey);
 	}
 
 	public void filter(

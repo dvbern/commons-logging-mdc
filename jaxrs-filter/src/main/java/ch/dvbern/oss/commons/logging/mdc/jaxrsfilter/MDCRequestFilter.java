@@ -1,7 +1,7 @@
 package ch.dvbern.oss.commons.logging.mdc.jaxrsfilter;
 
 import ch.dvbern.oss.commons.logging.mdc.MDCDAO;
-import ch.dvbern.oss.commons.logging.mdc.MDCDAODefaultImpl;
+import ch.dvbern.oss.commons.logging.mdc.MDCDAOSlf4j;
 import ch.dvbern.oss.commons.logging.mdc.MDCValues;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import lombok.AccessLevel;
@@ -21,7 +21,7 @@ public class MDCRequestFilter {
 	 * {@link ContainerRequestContext#setProperty(String, Object)}.
 	 */
 	public static MDCRequestFilter usingRequestContextPropertyKey(String requestContextKey) {
-		return new MDCRequestFilter(new MDCDAODefaultImpl(), requestContextKey);
+		return new MDCRequestFilter(new MDCDAOSlf4j(), requestContextKey);
 	}
 
 	public void filter(
