@@ -234,7 +234,6 @@
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<releaseProfiles>release</releaseProfiles>
-					<arguments>-DskipTests</arguments>
 				</configuration>
 			</plugin>
 			<!-- </editor-fold> -->
