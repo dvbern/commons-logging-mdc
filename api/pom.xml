@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
 		<artifactId>commons-logging-mdc-parent</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>commons-logging-mdc-api</artifactId>
