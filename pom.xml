@@ -15,6 +15,13 @@
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<!-- *********************** Release HowTo *********************************************** -->
+	<!-- * ./mvnw -B jgitflow:release-start jgitflow:release-finish                          * -->
+	<!-- * Then check that everything is pushed                                              * -->
+	<!-- * and start the github action on branch "main":                                     * -->
+	<!-- * https://github.com/dvbern/commons-logging-mdc/actions/workflows/maven-publish.yml * -->
+	<!-- ************************************************************************************* -->
+	
 	<properties>
 		<slf4j.version>2.0.11</slf4j.version>
 		<spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
