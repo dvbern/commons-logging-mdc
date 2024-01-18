@@ -225,6 +225,19 @@
 			</plugin>
 			<!-- </editor-fold> -->
 
+			<!-- <editor-fold desc="maven-release-plugin" defaultstate="collapsed"> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<releaseProfiles>release</releaseProfiles>
+					<arguments>-DskipTests</arguments>
+				</configuration>
+			</plugin>
+			<!-- </editor-fold> -->
 		</plugins>
 
 	</build>
