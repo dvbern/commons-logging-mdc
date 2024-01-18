@@ -225,18 +225,21 @@
 			</plugin>
 			<!-- </editor-fold> -->
 
-			<!-- <editor-fold desc="maven-release-plugin" defaultstate="collapsed"> -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>3.0.1</version>
+				<groupId>ch.dvbern.oss.maven.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
 				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<releaseProfiles>release</releaseProfiles>
+					<flowInitContext>
+						<masterBranchName>main</masterBranchName>
+						<developBranchName>develop</developBranchName>
+						<featureBranchPrefix>feature/</featureBranchPrefix>
+						<releaseBranchPrefix>release/</releaseBranchPrefix>
+						<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+						<versionTagPrefix>v</versionTagPrefix>
+					</flowInitContext>
 				</configuration>
 			</plugin>
-			<!-- </editor-fold> -->
+
 		</plugins>
 
 	</build>
