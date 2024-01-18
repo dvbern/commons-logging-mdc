@@ -10,7 +10,7 @@
 
 	<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
 	<artifactId>dvb-commons-logging-mdc-parent</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>pom</packaging>
 
 	<!-- *********************** Release HowTo *********************************************** -->
