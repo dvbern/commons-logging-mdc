@@ -9,10 +9,17 @@
 	</parent>
 
 	<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-	<artifactId>commons-logging-mdc-parent</artifactId>
-	<version>0.0.1</version>
+	<artifactId>dvb-commons-logging-mdc-parent</artifactId>
+	<version>0.0.2</version>
 	<packaging>pom</packaging>
 
+	<!-- *********************** Release HowTo *********************************************** -->
+	<!-- * ./mvnw -B jgitflow:release-start jgitflow:release-finish                          * -->
+	<!-- * Then check that everything is pushed                                              * -->
+	<!-- * and start the github action on branch "main":                                     * -->
+	<!-- * https://github.com/dvbern/commons-logging-mdc/actions/workflows/maven-publish.yml * -->
+	<!-- ************************************************************************************* -->
+	
 	<properties>
 		<slf4j.version>2.0.11</slf4j.version>
 		<spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
@@ -25,6 +32,7 @@
 		<maven-checkstyle.version>10.12.7</maven-checkstyle.version>
 		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
 
 		<!-- ! keep in sync with .mvn/maven-wrapper.properties ! -->
 		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
@@ -80,12 +88,12 @@
 			</dependency>
 			<dependency>
 				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-				<artifactId>commons-logging-mdc-api</artifactId>
+				<artifactId>dvb-commons-logging-mdc-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-				<artifactId>commons-logging-mdc-jaxrs-filter</artifactId>
+				<artifactId>dvb-commons-logging-mdc-jaxrs-filter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -223,6 +231,16 @@
 			</plugin>
 			<!-- </editor-fold> -->
 
+			<!-- javadocs -->
+			<!-- maven-javadoc-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<doclint>all,-missing</doclint>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>ch.dvbern.oss.maven.jgitflow</groupId>
 				<artifactId>jgitflow-maven-plugin</artifactId>
@@ -243,15 +261,57 @@
 	</build>
 
 	<distributionManagement>
-		<repository>
-			<id>ossrh</id>
-			<name>Central Repository OSSRH</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
+	<profiles>
+		<profile>
+			<id>maven-central</id>
+			<properties>
+				<skip-javadoc />
+			</properties>
+			<build>
+				<plugins>
+
+					<!-- <editor-fold desc=" maven-gpg-plugin " defaultstate="collapsed"> -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<configuration>
+							<!-- Prevent gpg from using pinentry programs -->
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- </editor-fold> -->
+
+					<!-- <editor-fold desc="exus-staging-maven-plugin" defaultstate="collapsed"> -->
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<configuration>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						</configuration>
+					</plugin>
+					<!-- </editor-fold> -->
+
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
