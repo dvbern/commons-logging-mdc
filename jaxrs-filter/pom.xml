@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
 		<artifactId>dvb-commons-logging-mdc-parent</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.2</version>
 	</parent>
 
 	<artifactId>dvb-commons-logging-mdc-jaxrs-filter</artifactId>
