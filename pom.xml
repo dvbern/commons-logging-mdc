@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-	<artifactId>commons-logging-mdc-parent</artifactId>
+	<artifactId>dvb-commons-logging-mdc-parent</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -83,12 +83,12 @@
 			</dependency>
 			<dependency>
 				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-				<artifactId>commons-logging-mdc-api</artifactId>
+				<artifactId>dvb-commons-logging-mdc-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-				<artifactId>commons-logging-mdc-jaxrs-filter</artifactId>
+				<artifactId>dvb-commons-logging-mdc-jaxrs-filter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
