@@ -28,8 +28,6 @@
 		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
 		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-		<!-- maven-deploy-plugin -->
-		<deployAtEnd>true</deployAtEnd>
 
 		<!-- ! keep in sync with .mvn/maven-wrapper.properties ! -->
 		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
