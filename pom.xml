@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -25,6 +27,8 @@
 		<maven-checkstyle.version>10.12.7</maven-checkstyle.version>
 		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+		<!-- maven-deploy-plugin -->
+		<deployAtEnd>true</deployAtEnd>
 
 		<!-- ! keep in sync with .mvn/maven-wrapper.properties ! -->
 		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
@@ -222,6 +226,16 @@
 				</executions>
 			</plugin>
 			<!-- </editor-fold> -->
+
+			<!-- javadocs -->
+			<!-- maven-javadoc-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<doclint>all,-missing</doclint>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>ch.dvbern.oss.maven.jgitflow</groupId>
