@@ -15,7 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 17 and Maven Central Repo
+
+      - name: Setup JDK 17 and Maven Central Repo
         uses: actions/setup-java@v4
         with:
           java-version: '17'
@@ -23,9 +24,13 @@ jobs:
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
           cache: 'maven'
-      - name: Publish package
-        run: ./mvnw --batch-mode deploy
+
+      - name: Publish to Maven Central Repo
+        run: ./mvnw --batch-mode -Pmaven-central deploy
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}

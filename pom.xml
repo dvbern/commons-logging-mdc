@@ -27,6 +27,7 @@
 		<maven-checkstyle.version>10.12.7</maven-checkstyle.version>
 		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
 		<!-- maven-deploy-plugin -->
 		<deployAtEnd>true</deployAtEnd>
 
@@ -257,15 +258,57 @@
 	</build>
 
 	<distributionManagement>
-		<repository>
-			<id>ossrh</id>
-			<name>Central Repository OSSRH</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
 		<snapshotRepository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
+	<profiles>
+		<profile>
+			<id>maven-central</id>
+			<properties>
+				<skip-javadoc/>
+			</properties>
+			<build>
+				<plugins>
+
+					<!-- <editor-fold desc=" maven-gpg-plugin " defaultstate="collapsed"> -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<configuration>
+							<!-- Prevent gpg from using pinentry programs -->
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- </editor-fold> -->
+
+					<!-- <editor-fold desc="exus-staging-maven-plugin" defaultstate="collapsed"> -->
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<configuration>
+							<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+						</configuration>
+					</plugin>
+					<!-- </editor-fold> -->
+
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
