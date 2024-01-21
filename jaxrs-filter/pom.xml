@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -11,16 +13,24 @@
 	<artifactId>dvb-commons-logging-mdc-jaxrs-filter</artifactId>
 	<name>jaxrs-filter</name>
 
+	<!-- <editor-fold desc="dependencies" defaultstate="collapsed"> -->
 	<dependencies>
-		<dependency>
-			<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
-			<artifactId>dvb-commons-logging-mdc-api</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
+			<artifactId>dvb-commons-logging-mdc-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.annotation</groupId>
@@ -38,19 +48,11 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.github.spotbugs</groupId>
-			<artifactId>spotbugs-annotations</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<!-- we need an slf4j implementation for testing that implements the MDC. slf4-simple does not :( -->
 		<dependency>
@@ -75,4 +77,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<!-- </editor-fold> -->
+
 </project>

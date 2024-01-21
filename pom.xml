@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -19,7 +21,8 @@
 	<!-- * and start the github action on branch "main":                                     * -->
 	<!-- * https://github.com/dvbern/commons-logging-mdc/actions/workflows/maven-publish.yml * -->
 	<!-- ************************************************************************************* -->
-	
+
+	<!-- <editor-fold desc="properties" defaultstate="collapsed"> -->
 	<properties>
 		<slf4j.version>2.0.11</slf4j.version>
 		<spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
@@ -38,15 +41,19 @@
 		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
 		<maven-enforcer-plugin.requireJavaVersion.version>${maven-compiler-plugin.javaversion}</maven-enforcer-plugin.requireJavaVersion.version>
 	</properties>
+	<!-- </editor-fold> -->
 
 	<description>This Java library contains helpers filling standard logging MDC fields expected in all apps.</description>
 	<url>https://github.com/dvbern/commons-logging-mdc</url>
 
+	<!-- <editor-fold desc="organization" defaultstate="collapsed"> -->
 	<organization>
 		<name>DV Bern AG</name>
 		<url>https://www.dvbern.ch</url>
 	</organization>
+	<!-- </editor-fold> -->
 
+	<!-- <editor-fold desc="licenses" defaultstate="collapsed"> -->
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -54,29 +61,38 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+	<!-- </editor-fold> -->
 
+	<!-- <editor-fold desc="modules" defaultstate="collapsed"> -->
 	<modules>
 		<module>api</module>
 		<module>jaxrs-filter</module>
 	</modules>
+	<!-- </editor-fold> -->
 
+	<!-- <editor-fold desc="scm" defaultstate="collapsed"> -->
 	<scm>
 		<connection>scm:git:git://github.com/dvbern/commons-logging-mdc.git</connection>
 		<developerConnection>scm:git:ssh://github.com:dvbern/commons-logging-mdc.git</developerConnection>
 		<url>https://github.com/dvbern/commons-logging-mdc.git</url>
-
 	</scm>
+	<!-- </editor-fold> -->
 
+	<!-- <editor-fold desc="issueManagement" defaultstate="collapsed"> -->
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/dvbern/commons-logging-mdc/issues</url>
 	</issueManagement>
+	<!-- </editor-fold> -->
 
+	<!-- <editor-fold desc="ciManagement" defaultstate="collapsed"> -->
 	<ciManagement>
 		<system>GitHub Actions</system>
 		<url>https://github.com/dvbern/commons-logging-mdc/actions</url>
 	</ciManagement>
+	<!-- </editor-fold> -->
 
+	<!-- <editor-fold desc="dependencyManagement" defaultstate="collapsed"> -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -86,6 +102,7 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+
 			<dependency>
 				<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
 				<artifactId>dvb-commons-logging-mdc-api</artifactId>
@@ -96,7 +113,6 @@
 				<artifactId>dvb-commons-logging-mdc-jaxrs-filter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
@@ -112,7 +128,6 @@
 				<artifactId>spotbugs-annotations</artifactId>
 				<version>4.8.3</version>
 			</dependency>
-
 			<dependency>
 				<groupId>jakarta.annotation</groupId>
 				<artifactId>jakarta.annotation-api</artifactId>
@@ -123,7 +138,6 @@
 				<artifactId>jakarta.enterprise.cdi-api</artifactId>
 				<version>3.0.1</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -151,6 +165,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<!-- </editor-fold> -->
 
 	<build>
 		<plugins>
@@ -172,6 +187,23 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
+			</plugin>
+			<!-- </editor-fold> -->
+
+			<!-- <editor-fold desc="jandex-maven-plugin" defaultstate="collapsed"> -->
+			<plugin>
+				<groupId>org.jboss.jandex</groupId>
+				<artifactId>jandex-maven-plugin</artifactId>
+				<version>1.2.3</version>
+				<executions>
+					<execution>
+						<id>make-index</id>
+						<goals>
+							<goal>jandex</goal>
+						</goals>
+						<!-- phase is 'process-classes by default' -->
+					</execution>
+				</executions>
 			</plugin>
 			<!-- </editor-fold> -->
 
@@ -231,8 +263,7 @@
 			</plugin>
 			<!-- </editor-fold> -->
 
-			<!-- javadocs -->
-			<!-- maven-javadoc-plugin -->
+			<!-- <editor-fold desc="maven-javadoc-plugin" defaultstate="collapsed"> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -240,7 +271,9 @@
 					<doclint>all,-missing</doclint>
 				</configuration>
 			</plugin>
+			<!-- </editor-fold> -->
 
+			<!-- <editor-fold desc="jgitflow-maven-plugin" defaultstate="collapsed"> -->
 			<plugin>
 				<groupId>ch.dvbern.oss.maven.jgitflow</groupId>
 				<artifactId>jgitflow-maven-plugin</artifactId>
@@ -255,23 +288,25 @@
 					</flowInitContext>
 				</configuration>
 			</plugin>
-
+			<!-- </editor-fold> -->
 		</plugins>
-
 	</build>
 
+	<!-- <editor-fold desc="distributionManagement" defaultstate="collapsed"> -->
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
+	<!-- </editor-fold> -->
 
 	<profiles>
+		<!-- <editor-fold desc="maven-central" defaultstate="collapsed"> -->
 		<profile>
 			<id>maven-central</id>
 			<properties>
-				<skip-javadoc />
+				<skip-javadoc/>
 			</properties>
 			<build>
 				<plugins>
@@ -313,5 +348,6 @@
 				</plugins>
 			</build>
 		</profile>
+		<!-- </editor-fold> -->
 	</profiles>
 </project>
