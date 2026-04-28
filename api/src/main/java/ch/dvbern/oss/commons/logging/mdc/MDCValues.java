@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import lombok.Value;
 import lombok.experimental.Accessors;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.Nullable;
 
 @Value
 // mimic record behavior

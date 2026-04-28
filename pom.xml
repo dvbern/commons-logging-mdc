@@ -120,9 +120,9 @@
 				<version>1.18.30</version>
 			</dependency>
 			<dependency>
-				<groupId>org.checkerframework</groupId>
-				<artifactId>checker-qual</artifactId>
-				<version>3.42.0</version>
+				<groupId>org.jspecify</groupId>
+				<artifactId>jspecify</artifactId>
+				<version>1.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
