@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>ch.dvbern.oss.maven</groupId>
 		<artifactId>parent-minimal</artifactId>
-		<version>3.0.0</version>
+		<version>5.0.4</version>
 	</parent>
 
 	<groupId>ch.dvbern.oss.commons-logging-mdc</groupId>
 	<artifactId>dvb-commons-logging-mdc-parent</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<name>dvb-commons-logging-mdc-parent</name>
 	<packaging>pom</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 
@@ -25,21 +25,23 @@
 
 	<!-- <editor-fold desc="properties" defaultstate="collapsed"> -->
 	<properties>
-		<slf4j.version>2.0.11</slf4j.version>
-		<spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
-		<junit.jupiter.version>5.10.0</junit.jupiter.version>
-		<mockito-junit-jupiter.version>5.7.0</mockito-junit-jupiter.version>
+		<maven-compiler-plugin.javaversion>17</maven-compiler-plugin.javaversion>
 
-		<spotbugs-maven-plugin.version>4.8.1.0</spotbugs-maven-plugin.version>
-		<maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
-		<maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
-		<maven-checkstyle.version>10.12.7</maven-checkstyle.version>
-		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
-		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+		<slf4j.version>2.0.17</slf4j.version>
+		<spotbugs-annotations.version>4.8.3</spotbugs-annotations.version>
+		<junit.jupiter.version>6.0.3</junit.jupiter.version>
+		<mockito-junit-jupiter.version>5.23.0</mockito-junit-jupiter.version>
+
+		<spotbugs-maven-plugin.version>4.9.8.3</spotbugs-maven-plugin.version>
+		<maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
+		<maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+		<!-- See https://checkstyle.sourceforge.io/ for java version compatibility -->
+		<maven-checkstyle.version>12.3.1</maven-checkstyle.version>
+		<maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
+		<jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
 
 		<!-- ! keep in sync with .mvn/maven-wrapper.properties ! -->
-		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.5,)</maven-enforcer-plugin.requireMavenVersion.version>
+		<maven-enforcer-plugin.requireMavenVersion.version>[3.9.15]</maven-enforcer-plugin.requireMavenVersion.version>
 		<maven-enforcer-plugin.requireJavaVersion.version>${maven-compiler-plugin.javaversion}</maven-enforcer-plugin.requireJavaVersion.version>
 	</properties>
 	<!-- </editor-fold> -->
@@ -117,7 +119,7 @@
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
-				<version>1.18.30</version>
+				<version>1.18.46</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jspecify</groupId>
@@ -127,7 +129,7 @@
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-annotations</artifactId>
-				<version>4.8.3</version>
+				<version>4.9.8</version>
 			</dependency>
 			<dependency>
 				<groupId>jakarta.annotation</groupId>
@@ -162,7 +164,7 @@
 			<dependency>
 				<groupId>org.assertj</groupId>
 				<artifactId>assertj-core</artifactId>
-				<version>3.24.2</version>
+				<version>3.27.7</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -193,9 +195,9 @@
 
 			<!-- <editor-fold desc="jandex-maven-plugin" defaultstate="collapsed"> -->
 			<plugin>
-				<groupId>org.jboss.jandex</groupId>
+				<groupId>io.smallrye</groupId>
 				<artifactId>jandex-maven-plugin</artifactId>
-				<version>1.2.3</version>
+				<version>3.5.3</version>
 				<executions>
 					<execution>
 						<id>make-index</id>
@@ -274,33 +276,41 @@
 			</plugin>
 			<!-- </editor-fold> -->
 
-			<!-- <editor-fold desc="jgitflow-maven-plugin" defaultstate="collapsed"> -->
+			<!-- <editor-fold desc="versions-maven-plugin" defaultstate="collapsed"> -->
 			<plugin>
-				<groupId>ch.dvbern.oss.maven.jgitflow</groupId>
-				<artifactId>jgitflow-maven-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.21.0</version>
 				<configuration>
-					<flowInitContext>
-						<masterBranchName>main</masterBranchName>
-						<developBranchName>develop</developBranchName>
-						<featureBranchPrefix>feature/</featureBranchPrefix>
-						<releaseBranchPrefix>release/</releaseBranchPrefix>
-						<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-						<versionTagPrefix>v</versionTagPrefix>
-					</flowInitContext>
+					<ruleSet>
+						<ignoreVersions>
+							<ignoreVersion>
+								<type>regex</type>
+								<version>.*RC.*</version>
+							</ignoreVersion>
+							<ignoreVersion>
+								<type>regex</type>
+								<version>.*alpha.*</version>
+							</ignoreVersion>
+							<ignoreVersion>
+								<type>regex</type>
+								<version>.*beta.*</version>
+							</ignoreVersion>
+							<ignoreVersion>
+								<type>regex</type>
+								<version>.*redhat.*</version>
+							</ignoreVersion>
+							<ignoreVersion>
+								<type>regex</type>
+								<version>.*-M\d+</version>
+							</ignoreVersion>
+						</ignoreVersions>
+					</ruleSet>
 				</configuration>
 			</plugin>
 			<!-- </editor-fold> -->
 		</plugins>
 	</build>
-
-	<!-- <editor-fold desc="distributionManagement" defaultstate="collapsed"> -->
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<!-- </editor-fold> -->
 
 	<profiles>
 		<!-- <editor-fold desc="maven-central" defaultstate="collapsed"> -->
@@ -309,45 +319,6 @@
 			<properties>
 				<skip-javadoc/>
 			</properties>
-			<build>
-				<plugins>
-
-					<!-- <editor-fold desc=" maven-gpg-plugin " defaultstate="collapsed"> -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>${maven-gpg-plugin.version}</version>
-						<configuration>
-							<!-- Prevent gpg from using pinentry programs -->
-							<gpgArguments>
-								<arg>--pinentry-mode</arg>
-								<arg>loopback</arg>
-							</gpgArguments>
-						</configuration>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- </editor-fold> -->
-
-					<!-- <editor-fold desc="exus-staging-maven-plugin" defaultstate="collapsed"> -->
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<configuration>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-						</configuration>
-					</plugin>
-					<!-- </editor-fold> -->
-
-				</plugins>
-			</build>
 		</profile>
 		<!-- </editor-fold> -->
 	</profiles>
