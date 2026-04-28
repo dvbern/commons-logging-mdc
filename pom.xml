@@ -17,9 +17,9 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<!-- *********************** Release HowTo *********************************************** -->
-	<!-- * ./mvnw -B jgitflow:release-start jgitflow:release-finish                          * -->
+	<!-- * run `./release.sh -p`                                                             * -->
 	<!-- * Then check that everything is pushed                                              * -->
-	<!-- * and start the github action on branch "main":                                     * -->
+	<!-- * and start the github action ***on the newly created version tag***                * -->
 	<!-- * https://github.com/dvbern/commons-logging-mdc/actions/workflows/maven-publish.yml * -->
 	<!-- ************************************************************************************* -->
 
