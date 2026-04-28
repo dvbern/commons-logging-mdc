@@ -14,7 +14,7 @@
 	<artifactId>dvb-commons-logging-mdc-parent</artifactId>
 	<name>dvb-commons-logging-mdc-parent</name>
 	<packaging>pom</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 
 	<!-- *********************** Release HowTo *********************************************** -->
 	<!-- * run `./release.sh -p`                                                             * -->
